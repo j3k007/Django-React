@@ -1,5 +1,5 @@
 from django.urls import path, include
-from api.views import NoteListCreate, NoteDelete
+from views import NoteListCreate, NoteDelete
 
 urlpatterns = [
     path('notes/', NoteListCreate.as_view(), name="note-list"),
