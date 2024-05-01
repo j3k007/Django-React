@@ -4,7 +4,8 @@ import api from "../api";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
 import { useState, useEffect } from "react";
 
-function ProtectedRoute({children}){
+// eslint-disable-next-line react/prop-types
+export default function ProtectedRoute({children}){
     const [isAuthorized, setIsAuthorized] = useState(null);
 
     useEffect(() => {
@@ -17,7 +18,7 @@ function ProtectedRoute({children}){
         try{
             const res = await api.post("/api/token/refresh", {
                 refresh: refreshToken,
-            })
+            });
             if (res.status === 200){
                 localStorage.setItem(ACCESS_TOKEN, res.data.access)
                 setIsAuthorized(true);
